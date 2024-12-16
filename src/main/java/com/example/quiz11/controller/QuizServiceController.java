@@ -4,11 +4,13 @@ import com.example.quiz11.service.ifs.QuizService;
 import com.example.quiz11.vo.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.time.LocalDate;
 
-@CrossOrigin(origins = "http://localhost:4200") // 允許來自 http://localhost:4200 的api請求
+@CrossOrigin(origins = "http://localhost:4200") // 允許來自 http://localhost:4200 的 api 請求
 @RestController
 public class QuizServiceController {
 
@@ -32,6 +34,30 @@ public class QuizServiceController {
     
     @PostMapping(value = "quiz/search")
 	public SearchRes search(@RequestBody SearchReq req) {
+        // 因為 service 中有使用 cache，所以必須要確認 req 中的參數的值不是 null
+        // 檢視條件
+        String name = req.getName();
+        // 若 name = null 或空字串或全空白字串，一律都轉換成空字串
+        if (!StringUtils.hasText(name)) {
+            name = "";
+            // 把新的值 set 回 req
+            req.setName(name);
+        }
+
+        LocalDate startDate = req.getStartDate();
+        // 若沒有日期條件，將日期轉換成很早的時間
+        if (startDate == null) {
+            startDate = LocalDate.of(1970, 1, 1);
+            req.setStartDate(startDate);
+        }
+
+        LocalDate endDate = req.getEndDate();
+        // 若沒有結束日期條件，將日期轉換成久遠的未來時間
+        if (endDate == null) {
+            endDate = LocalDate.of(9999, 12, 31);
+            req.setEndDate(endDate);
+        }
+
         return quizService.search(req);
 	}
 

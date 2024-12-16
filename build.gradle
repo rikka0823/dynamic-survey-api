@@ -28,6 +28,11 @@ dependencies {
 	implementation 'com.mysql:mysql-connector-j'
 	// 資料驗證
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	// cache
+	implementation 'org.springframework.boot:spring-boot-starter-cache'
+	// caffeine cache
+	implementation 'com.github.ben-manes.caffeine:caffeine'
+
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }

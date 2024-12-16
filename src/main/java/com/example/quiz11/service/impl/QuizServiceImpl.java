@@ -10,6 +10,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
@@ -197,29 +198,42 @@ public class QuizServiceImpl implements QuizService {
         return new BasicRes(ResMessage.SUCCESS.getCode(), ResMessage.SUCCESS.getMessage());
     }
 
+    // cacheNames 可以當作書本目錄的"章"，key可以當作書本的章
+    // cacheNames 等號後面的字串可以多個，多個時要使用{}，例如：cacheNames = {"A", "B"}
+    // 因為 key 等號後面的字串中有多個字串要串接，所以必須要用 concat 將所有字串串在一起
+    // Cache 不支援 concat("字串1", "字串2", "字串3")這種寫法
+    // concat 中非字串參數值使用方法 toString() 轉成字串
+    // unless 可以翻譯成排除的意思，後面的字串是指會排除符合條件的
+    @Cacheable(
+            cacheNames = "quiz_search",
+            key = "#req.name.concat('-').concat(#req.startDate.toString()).concat('-')" +
+                    ".concat(#req.endDate.toString())",
+            unless = "#result.code != 200")
     @Override
     public SearchRes search(SearchReq req) {
+        // 因為 service 中有使用 cache，所以必須要確認 req 中的參數的值不是 null
+        // 下方條件值的轉換放到 controller
         // 檢視條件
-        String name = req.getName();
-        // 若 name = null 或空字串或全空白字串，一律都轉換成空字串
-        if (!StringUtils.hasText(name)) {
-            name = "";
-        }
-
-        LocalDate startDate = req.getStartDate();
-        // 若沒有日期條件，將日期轉換成很早的時間
-        if (startDate == null) {
-            startDate = LocalDate.of(1970, 1, 1);
-        }
-
-        LocalDate endDate = req.getEndDate();
-        // 若沒有結束日期條件，將日期轉換成久遠的未來時間
-        if (endDate == null) {
-            endDate = LocalDate.of(9999, 12, 31);
-        }
+//        String name = req.getName();
+//        // 若 name = null 或空字串或全空白字串，一律都轉換成空字串
+//        if (!StringUtils.hasText(name)) {
+//            name = "";
+//        }
+//
+//        LocalDate startDate = req.getStartDate();
+//        // 若沒有日期條件，將日期轉換成很早的時間
+//        if (startDate == null) {
+//            startDate = LocalDate.of(1970, 1, 1);
+//        }
+//
+//        LocalDate endDate = req.getEndDate();
+//        // 若沒有結束日期條件，將日期轉換成久遠的未來時間
+//        if (endDate == null) {
+//            endDate = LocalDate.of(9999, 12, 31);
+//        }
 
         return new SearchRes(ResMessage.SUCCESS.getCode(), ResMessage.SUCCESS.getMessage(),
-                quizDao.getByConditions(name, startDate, endDate));
+                quizDao.getByConditions(req.getName(), req.getStartDate(), req.getEndDate()));
     }
 
     @Transactional
