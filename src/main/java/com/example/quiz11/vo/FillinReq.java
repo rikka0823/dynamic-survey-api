@@ -15,7 +15,7 @@ public class FillinReq {
     private String email;
 
     private int age;
-    // ÃD¸¹, ¿ï¶µ
+    // é¡Œè™Ÿï¼Œå•é¡Œ
     private Map<Integer, List<String>> answer;
 
     private LocalDate fillinDate;

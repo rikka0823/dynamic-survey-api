@@ -3,6 +3,7 @@ package com.example.quiz11.controller;
 import com.example.quiz11.service.ifs.QuizService;
 import com.example.quiz11.vo.*;
 
+import io.swagger.v3.oas.annotations.Hidden;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
@@ -27,6 +28,7 @@ public class QuizServiceController {
         return quizService.update(req);
 	}
 
+    @Hidden
     @PostMapping(value = "quiz/delete")
 	public BasicRes delete(@RequestBody DeleteReq req) {
         return quizService.delete(req);

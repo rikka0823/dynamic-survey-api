@@ -10,6 +10,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -82,6 +83,7 @@ public class QuizServiceImpl implements QuizService {
         return null;
     }
 
+    @CacheEvict(cacheNames = "quiz_search")
     @Transactional
     @Override
     public BasicRes create(CreateUpdateReq req) {
@@ -98,7 +100,7 @@ public class QuizServiceImpl implements QuizService {
 
         // 新增問卷:
         // 因為 Quiz 中的 id 是 AI 自動生成的流水號，不會重複寫入，所以不用檢查資料是否已存在相同的 pk
-        // quizDao 要執行 save 後才可以把該 id 的值回傳，
+        // quizDao 要執行 save 後才可以把該 id 的值回傳
         Quiz quizRes = quizDao.save(new Quiz(req.getName(), req.getDescription(), req.getStartDate(),
                 req.getEndDate(), req.isPublished()));
 
@@ -115,6 +117,7 @@ public class QuizServiceImpl implements QuizService {
         return new BasicRes(ResMessage.SUCCESS.getCode(), ResMessage.SUCCESS.getMessage());
     }
 
+    @CacheEvict(cacheNames = "quiz_search")
     @Transactional
     @Override
     public BasicRes update(CreateUpdateReq req) {
@@ -186,6 +189,9 @@ public class QuizServiceImpl implements QuizService {
         return new BasicRes(ResMessage.SUCCESS.getCode(), ResMessage.SUCCESS.getMessage());
     }
 
+    // 清除暫存資料: 只有 cacheNames 沒有 key，會把 cacheNames 是 quiz_search的所有暫存資料清除
+    // 如果是 cacheNames + key，則是指清除特定的暫存資料
+    @CacheEvict(cacheNames = "quiz_search", allEntries = true)
     @Transactional
     @Override
     public BasicRes delete(DeleteReq req) {
@@ -203,7 +209,8 @@ public class QuizServiceImpl implements QuizService {
     // 因為 key 等號後面的字串中有多個字串要串接，所以必須要用 concat 將所有字串串在一起
     // Cache 不支援 concat("字串1", "字串2", "字串3")這種寫法
     // concat 中非字串參數值使用方法 toString() 轉成字串
-    // unless 可以翻譯成排除的意思，後面的字串是指會排除符合條件的
+    // unless 可以翻譯成排除的意思，後面的字串是指會排除符合條件的 --> 排除 res 不成功，即只暫存成功時的資料
+    // #result: 表示方法返回的結果，即使不同方法有不同的返回資料型態，也通用
     @Cacheable(
             cacheNames = "quiz_search",
             key = "#req.name.concat('-').concat(#req.startDate.toString()).concat('-')" +
