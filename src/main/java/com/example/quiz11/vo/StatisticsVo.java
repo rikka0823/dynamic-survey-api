@@ -10,7 +10,6 @@ public class StatisticsVo {
 
     private String quesName;
 
-    // 選項, 次數
     private Map<String, Integer> optionCountMap;
 
     public StatisticsVo() {
