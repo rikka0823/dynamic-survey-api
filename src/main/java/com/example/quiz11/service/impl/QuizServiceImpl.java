@@ -211,11 +211,23 @@ public class QuizServiceImpl implements QuizService {
     // concat 中非字串參數值使用方法 toString() 轉成字串
     // unless 可以翻譯成排除的意思，後面的字串是指會排除符合條件的 --> 排除 res 不成功，即只暫存成功時的資料
     // #result: 表示方法返回的結果，即使不同方法有不同的返回資料型態，也通用
+    
+    // for spring boot 3.x 版本
+    // key 等號後面的字串，因為 req 是物件，使用 #req 會取不到參數值，簡單點的方法是使用位置 #p0 來表示方法中第一個參數
+    // 多參數的串接，不使用 concat，直接在字串中使用加號(+)串多個參數
+    // 字串中使用單引號來表示字串
+    // 串接值的資料型態不是 String 時，可以使用 .toString() 轉換
+    // #result: 表示方法返回的結果；即使是不同方法有不同的返回資料型態，也通用
+    // unless 可以翻成排除的意思，後面的字串是指會排除符合條件的 --> 排除 res 不成功，即只暫存成功時的資料
+//    @Cacheable(cacheNames = "quiz_search", //
+//            key = "#p0.name + '-' + #p0.startDate.toString() + '-' + #p0.endDate.toString()", //
+//            unless = "#result.code != 200")
     @Cacheable(
             cacheNames = "quiz_search",
             key = "#req.name.concat('-').concat(#req.startDate.toString()).concat('-')" +
                     ".concat(#req.endDate.toString())",
             unless = "#result.code != 200")
+
     @Override
     public SearchRes search(SearchReq req) {
         // 因為 service 中有使用 cache，所以必須要確認 req 中的參數的值不是 null
