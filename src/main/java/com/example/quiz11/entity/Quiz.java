@@ -25,7 +25,6 @@ public class Quiz {
 	@Column(name = "id")
 	private int id;
 
-
 	@NotBlank(message = MsgConstants.QUIZ_PARAM_ERROR_MSG) // 檢查非 null 且至少要包含一個非空白字元，等同於使用 !StringUtils.hasText()
 	@Column(name = "name")
 	private String name;
@@ -111,7 +110,4 @@ public class Quiz {
 	public void setPublished(boolean published) {
 		this.published = published;
 	}
-	
-	
-	
 }

@@ -31,5 +31,4 @@ public interface FeedbackDao extends JpaRepository<Feedback, FeedBackId> {
             " join Feedback f on qu.quizId = f.quizId and qu.quesId = f.quesId" +
             " where qz.id = ?1", nativeQuery = false)
     public List<StatisticsDto> getStatisticsByQuizId(int quizId);
-
 }

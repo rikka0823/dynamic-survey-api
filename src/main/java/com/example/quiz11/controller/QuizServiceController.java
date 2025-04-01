@@ -1,8 +1,8 @@
 package com.example.quiz11.controller;
 
+import com.example.quiz11.service.ifs.AccountService;
 import com.example.quiz11.service.ifs.QuizService;
 import com.example.quiz11.vo.*;
-
 import io.swagger.v3.oas.annotations.Hidden;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
@@ -17,6 +17,9 @@ public class QuizServiceController {
 
     @Autowired
     private QuizService quizService;
+
+    @Autowired
+    private AccountService accountService;
 
     @PostMapping(value = "quiz/create")
     public BasicRes create(@Valid @RequestBody CreateUpdateReq req) {
@@ -68,7 +71,6 @@ public class QuizServiceController {
         return quizService.fillin(req);
     }
 
-
     @GetMapping(value = "quiz/getQuizData")
     public SearchRes getQuizData() {
         return quizService.getQuizData();
@@ -79,7 +81,6 @@ public class QuizServiceController {
         return quizService.getQuizDataById(quizId);
     }
 
-    // 完整 URL 路徑: http:// localhost::8080/quiz/feedback?quizId=1
     @GetMapping(value = "quiz/feedback")
     public FeedbackRes feedback(@RequestParam int quizId) {
         return quizService.feedback(quizId);
@@ -93,5 +94,15 @@ public class QuizServiceController {
     @GetMapping(value = "quiz/getQuesData")
     public QuesDataRes getQuesData(@RequestParam int quizId) {
         return quizService.getQuesData(quizId);
+    }
+
+    @PostMapping("account/register")
+    public BasicRes createAccount(@RequestBody @Valid AccountReq req) {
+        return accountService.createAccount(req);
+    }
+
+    @PostMapping("account/login")
+    public BasicRes login(@RequestBody @Valid AccountReq req) {
+        return accountService.login(req);
     }
 }

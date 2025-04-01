@@ -38,6 +38,4 @@ public interface QuizDao extends JpaRepository<Quiz, Integer> {
             " from quiz where id = ?1 and published is true" +
             " and start_date <= ?2 and end_date >= ?2", nativeQuery = true)
     public Quiz getByIdAndPublishedTrueBetween(int quizId, LocalDate fillinDate);
-
-
 }

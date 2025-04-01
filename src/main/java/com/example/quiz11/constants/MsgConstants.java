@@ -13,5 +13,4 @@ public class MsgConstants {
     public static final String QUES_TYPE_ERROR = "Ques type error!!";
 
     public static final String QUES_IS_EMPTY = "Ques is empty!!";
-
 }

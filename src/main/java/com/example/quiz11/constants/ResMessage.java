@@ -3,7 +3,6 @@ package com.example.quiz11.constants;
 public enum ResMessage {
 	
 	SUCCESS(200, "Success!!"),
-	QUIZ_PARAM_ERROR(400, "Quiz param error!!"),
 	QUES_PARAM_ERROR(400, "Ques type error!!"),
 	DATE_ERROR(400, "Date error!!"),
 	QUIZID_MISMATCH(400,"QuizID mismatch!!"),
@@ -17,7 +16,8 @@ public enum ResMessage {
 	ONE_OPTION_IS_ALLOWED(400, "One option is allowed"),
 	OPTIONS_TRANSFER_ERROR(400, "Options transfer error!!"),
 	OPTION_ANSWER_MISMATCH(400, "Option answer mismatch"),
-	EMAIL_DUPLICATED(400, "Email duplicated!!");
+	EMAIL_DUPLICATED(400, "Email duplicated!!"),
+	LOGIN_ERROR(400, "Login error!");
 	
 	private int code;
 	
@@ -35,9 +35,4 @@ public enum ResMessage {
 	public String getMessage() {
 		return message;
 	}
-	
-	public static class Constants {
-		public static final String QUIZ_PARAM_ERROR_MSG = "";
-	}
-	
 }
