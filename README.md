@@ -1,8 +1,12 @@
 # dynamic-survey-api
 
-`dynamic-survey-api` 是一個基於 Spring Boot 的後端應用程式，與 `dynamic-survey-ui` 前端操作介面結合，專門用於創建、管理和分析動態問卷調查。該 API 提供靈活的問卷設計、即時回饋、統計分析等功能，並適用於市場研究、用戶滿意度調查等多種場景。
+`dynamic-survey-api` 是一個基於 Spring Boot 的後端應用程式，與 `dynamic-survey-ui` 前端操作介面結合的**動態問卷系統**，專門用於創建、管理和分析動態問卷調查。該 API 提供靈活的問卷設計、即時回饋、統計分析等功能，並適用於市場研究、用戶滿意度調查等多種場景。
 
 前端操作介面，詳見於 [`dynamic-survey-ui`](https://github.com/rikka0823/dynamic-survey-ui)。
+
+## Project Structure
+
+專案架構（Figma），請參考 [`動態問卷系統`](https://www.figma.com/design/7jcsPZxB0Q26WYPpvk3tzr/%E5%8B%95%E6%85%8B%E5%95%8F%E5%8D%B7%E7%B3%BB%E7%B5%B1-Template_For_Class-)。
 
 ## Key Features
 
