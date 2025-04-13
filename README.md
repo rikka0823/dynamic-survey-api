@@ -19,6 +19,7 @@
 - **Spring Boot 2.7.18**：作為應用核心框架，簡化開發流程並提升可維護性，並搭配 **Gradle** 進行構建與依賴管理。
 - **Spring Security**：提供應用的安全性功能，如以 bcrypt 將使用者密碼加密安全儲存。
 - **Spring Data JPA**：以 Hibernate 作為底層邏輯，將 Object 與 MySQL 資料庫進行 ORM 操作，如 CRUD 或 計數統計。
+- **Spring Boot Validation**：以 @Valid、@Validated 處理 Exception，並建立 GlobalExceptionHandler，採用 @ExceptionHandler 客製化錯誤、例外返回 JSON 訊息。
 - **MySQL 8.0.40**：關聯式資料庫管理系統，欄位一對多、複合主鍵的方式，儲存問卷數據和用戶資訊。
 - **Caffeine Cache**：透過 Cache 技術，提高問卷搜尋的效能，減少重複查詢時的延遲。
 - **Springdoc OpenAPI**：用於生成 Swagger UI 文件，詳細描述 API 端點。
