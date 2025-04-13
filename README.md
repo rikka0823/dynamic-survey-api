@@ -69,4 +69,6 @@
 
 ## 前端應用
 
-前端應用負責提供使用者操作介面，並通過 RESTful API 與後端進行串接。前端專案請參考 [`dynamic-survey-ui`](https://github.com/rikka0823/dynamic-survey-ui)。
+前端應用負責提供使用者操作介面，並通過 RESTful API 與後端進行串接。
+
+前端專案請參考 [`dynamic-survey-ui`](https://github.com/rikka0823/dynamic-survey-ui)。
