@@ -1,0 +1,41 @@
+services:
+  mysql-db:
+    container_name: mydb
+    build:
+      context: ./db
+    image: rikka0823/mysql-db-01
+    ports:
+      - "3307:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+    networks:
+      my-bridge-001:
+    volumes:
+      - db-data:/var/lib/mysql
+  java-app:
+    container_name: myapp
+    build:
+      context: .
+    image: rikka0823/java-app-01
+    ports:
+      - "8080:8080"
+    command: sh -c "./wait-for-it.sh mydb:3306 -- java -jar app.jar"
+    environment:
+      - DB_HOST_IP=mydb
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+    networks:
+      my-bridge-001:
+    depends_on:
+      - mysql-db
+
+networks:
+  my-bridge-001:
+
+volumes:
+  db-data:
+
