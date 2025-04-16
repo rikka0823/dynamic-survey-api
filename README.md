@@ -28,6 +28,16 @@
 - **Caffeine Cache**：透過 Cache 技術，提高問卷搜尋的效能，減少重複查詢時的延遲。
 - **Springdoc OpenAPI**：用於生成 Swagger UI 文件，詳細描述 API 端點。
 - **JUnit 5**：用於單元測試，確保程式的穩定性與可靠性。
+- **Docker**：編寫 Dockerfile 以建立 Spring Boot 應用程式和 MySQL 資料庫的容器映像檔（image），並使用 Docker Compose 管理多容器架構，實現 Spring Boot 應用與 MySQL 資料庫的整合，簡化並自動化部署流程。
+
+## Running the Project in Docker
+
+在執行以下 Shell 指令前，請先確保電腦安裝 Docker：
+
+- `docker-compose build --no-cache`：建立 Spring Boot 應用程式和 MySQL 資料庫的 Docker 映像檔（image），並強制不使用 Cache。
+- `docker-compose up -d`：啟動 docker-compose，並在 Docker daemon 背景中運作所有容器。
+- `docker-compose down`： 停止、移除運作中的容器，並且移除相關的映像檔（image）。
+- `docker volume rm dynamic-survey-api_db-data`：移除本地 Docker Volume 中掛載的資料庫資料。
 
 ## API Endpoints
 
