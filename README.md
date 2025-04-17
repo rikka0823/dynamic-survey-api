@@ -32,12 +32,12 @@
 
 ## Running the Project in Docker
 
-在執行以下 Shell 指令前，請先確保電腦安裝 Docker：
+在執行以下 Shell 指令前，請先確保電腦安裝及啟動 Docker：
 
 - `docker-compose build --no-cache`：建立 Spring Boot 應用程式和 MySQL 資料庫的 Docker 映像檔（image），並強制不使用 Cache。
 - `docker-compose up -d`：啟動 docker-compose，並在 Docker daemon 背景中運作所有容器。
 - `docker-compose down`： 停止、移除運作中的容器，並且移除相關的映像檔（image）。
-- `docker volume rm dynamic-survey-api_db-data`：移除本地 Docker Volume 中掛載的資料庫資料。
+- `docker volume rm dynamic-survey-api_db-data`：移除本地 Docker Volume 中存放的資料庫資料。
 
 ## API Endpoints
 
