@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.time.LocalDate;
 
-@CrossOrigin(origins = "http://localhost:4200") // 允許來自 http://localhost:4200 的 api 請求
+@CrossOrigin(origins = {"http://localhost:4200", "http://localhost"})
 @RestController
 public class QuizServiceController {
 

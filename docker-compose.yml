@@ -22,9 +22,9 @@ services:
     image: rikka0823/java-app-01
     ports:
       - "8080:8080"
-    command: sh -c "./wait-for-it.sh mydb:3306 -- java -jar app.jar"
+    command: sh -c "./wait-for-it.sh mysql-db:3306 -- java -jar app.jar"
     environment:
-      - DB_HOST_IP=mydb
+      - DB_HOST_IP=mysql-db
       - MYSQL_DATABASE=${MYSQL_DATABASE}
       - MYSQL_USER=${MYSQL_USER}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
