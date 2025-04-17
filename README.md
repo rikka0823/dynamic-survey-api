@@ -39,7 +39,7 @@
 - `docker-compose down`： 停止、移除運作中的容器，並且移除相關的映像檔（image）。
 - `docker volume rm dynamic-survey-api_db-data`：移除本地 Docker Volume 中存放的資料庫資料。
 
-容器順利運作後，可依需求輸入 Shell 指令停止、移除運作中的容器，停止服務。
+容器順利運作後，API 相關操作，可參考 [`Swagger UI`](http://localhost:8080/swagger-ui/index.html) 內 API 文件操作範例，或將本專案之 `dynamic-survey-api.postman_collection.json` 匯入 Postman 查看範例，並依需求輸入 Shell 指令停止、移除運作中的容器，停止服務。
 
 ## API Endpoints
 
