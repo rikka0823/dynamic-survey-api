@@ -1,0 +1,407 @@
+{
+	"info": {
+		"_postman_id": "752eb9ac-53ef-4d38-9fef-24732e60b1db",
+		"name": "dynamic-survey-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "42836536"
+	},
+	"item": [
+		{
+			"name": "account",
+			"item": [
+				{
+					"name": "createAccount",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"admin@gmail.com\",\r\n    \"password\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/account/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"account",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"admin@gmail.com\",\r\n    \"password\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/account/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"account",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "quiz",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 0,\r\n    \"name\": \"測試\",\r\n    \"description\": \"測試\",\r\n    \"startDate\": \"2025-04-01\",\r\n    \"endDate\": \"2025-04-01\",\r\n    \"published\": false,\r\n    \"quesList\": [\r\n        {\r\n            \"quizId\": 0,\r\n            \"quesId\": 1,\r\n            \"quesName\": \"Z\",\r\n            \"type\": \"single\",\r\n            \"required\": true,\r\n            \"options\": \"[{\\\"optionName\\\":\\\"陽春麵\\\",\\\"code\\\":\\\"A\\\"},{\\\"optionName\\\":\\\"牛肉麵\\\",\\\"code\\\":\\\"B\\\"}]\"\r\n        },\r\n        {\r\n            \"quizId\": 0,\r\n            \"quesId\": 2,\r\n            \"quesName\": \"sS\",\r\n            \"type\": \"single\",\r\n            \"required\": true,\r\n            \"options\": \"[{\\\"optionName\\\":\\\"陽春麵\\\",\\\"code\\\":\\\"A\\\"},{\\\"optionName\\\":\\\"牛肉麵\\\",\\\"code\\\":\\\"B\\\"}]\"\r\n\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/quiz/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"quiz",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 104,\r\n    \"name\": \"測試\",\r\n    \"description\": \"測試\",\r\n    \"startDate\": \"2025-04-01\",\r\n    \"endDate\": \"2025-04-01\",\r\n    \"published\": true,\r\n    \"quesList\": [\r\n        {\r\n            \"quizId\": 104,\r\n            \"quesId\": 1,\r\n            \"quesName\": \"Z\",\r\n            \"type\": \"single\",\r\n            \"required\": true,\r\n            \"options\": \"[{\\\"optionName\\\":\\\"陽春麵\\\",\\\"code\\\":\\\"A\\\"},{\\\"optionName\\\":\\\"牛肉麵\\\",\\\"code\\\":\\\"B\\\"}]\"\r\n        },\r\n        {\r\n            \"quizId\": 104,\r\n            \"quesId\": 2,\r\n            \"quesName\": \"DS\",\r\n            \"type\": \"single\",\r\n            \"required\": true,\r\n            \"options\": \"[{\\\"optionName\\\":\\\"陽春麵\\\",\\\"code\\\":\\\"A\\\"},{\\\"optionName\\\":\\\"牛肉麵\\\",\\\"code\\\":\\\"B\\\"}]\"\r\n\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/quiz/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"quiz",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"測試\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/quiz/search",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"quiz",
+								"search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"quizId\": 101,\r\n  \"userName\": \"string\",\r\n  \"phone\": \"string\",\r\n  \"email\": \"string\",\r\n  \"age\": 30,\r\n  \"answer\": {\r\n    \"1\": [\r\n      \"陽春麵\"\r\n    ]\r\n  },\r\n  \"fillinDate\": \"2025-04-01\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/quiz/fillin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"quiz",
+								"fillin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"quizIdList\": [\r\n        103\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/quiz/delete",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"quiz",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getQuizData",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"測試\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/quiz/getQuizData",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"quiz",
+								"getQuizData"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getQuizDataById",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"測試\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/quiz/getQuizDataById?quizId=90",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"quiz",
+								"getQuizDataById"
+							],
+							"query": [
+								{
+									"key": "quizId",
+									"value": "90"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "feedback",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"測試\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/quiz/feedback?quizId=90",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"quiz",
+								"feedback"
+							],
+							"query": [
+								{
+									"key": "quizId",
+									"value": "90"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "statistics",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"測試\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/quiz/statistics?quizId=90",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"quiz",
+								"statistics"
+							],
+							"query": [
+								{
+									"key": "quizId",
+									"value": "90"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getQuesData",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"測試\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/quiz/getQuesData?quizId=90",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"quiz",
+								"getQuesData"
+							],
+							"query": [
+								{
+									"key": "quizId",
+									"value": "90"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
