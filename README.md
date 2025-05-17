@@ -26,7 +26,7 @@
 - **Spring Boot Validation**：以 @Valid、@Validated 處理 Exception，並建立 GlobalExceptionHandler，採用 @ExceptionHandler 客製化錯誤、例外返回 JSON 訊息。
 - **MySQL 8.0.40**：關聯式資料庫管理系統，欄位一對多、複合主鍵的方式，儲存問卷數據和用戶資訊；並結合 Spring Boot 的 @Transactional，處理 ACID 之交易特性。
 - **Caffeine Cache**：透過 Cache 技術，提高問卷搜尋的效能，減少重複查詢時的延遲。
-- **Springdoc OpenAPI**：用於生成 Swagger UI 文件，詳細描述 API 端點。
+- **SpringDoc OpenAPI**：用於生成 Swagger UI 文件，詳細描述 API 端點。
 - **JUnit 5**：用於單元測試，確保程式的穩定性與可靠性。
 - **Docker**：編寫 Dockerfile 以建立 Spring Boot 應用程式和 MySQL 資料庫的容器映像檔（image），並使用 Docker Compose 管理多容器架構，實現 Spring Boot 應用與 MySQL 資料庫的整合，簡化並自動化部署流程。
 
